@@ -1,0 +1,10 @@
+thead {
+  background-color: #bd2929;
+  color: #fff;
+}
+thead,
+tr,
+td,
+th {
+  border: 2px solid black;
+}
