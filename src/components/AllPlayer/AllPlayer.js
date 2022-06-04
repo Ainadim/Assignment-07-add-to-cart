@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 
 const AllPlyaer = (props) => {
-  const { name, salary, images } = props.allData;
-
+  const { id, name, salary, images } = props.allData;
+  const data = props.allData;
   return (
     <div>
       <div>
@@ -18,12 +18,14 @@ const AllPlyaer = (props) => {
             <Card.Text>
               <b>Salary:</b> ${salary} Million
             </Card.Text>
+            <Button onClick={() => props.addCartHandel(data)} variant="primary">
+              <FontAwesomeIcon icon={faCartPlus} /> Add
+            </Button>
             <Button
-              onClick={() => props.addCartHandel(props.allData)}
-              variant="primary"
+              onClick={() => props.removeCartHnadeler(data)}
+              variant="danger"
             >
-              <FontAwesomeIcon icon={faCartPlus} />
-              <span>Add</span>
+              <FontAwesomeIcon icon={faDeleteLeft} />
             </Button>
           </Card.Body>
         </Card>

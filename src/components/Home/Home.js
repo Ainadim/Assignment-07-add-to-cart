@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AllPlyaer from "../AllPlyaer/AllPlyaer";
 import AllData from "../../Fake-data/MOCK_DATA.json";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Home.css";
 import Cart from "../Cart/Cart";
+import AllPlyaer from "../AllPlayer/AllPlayer";
 
 const Home = () => {
   const [player, setPlayer] = useState([]);
@@ -13,9 +13,13 @@ const Home = () => {
     setPlayer(AllData);
   });
 
-  const addCartHandel = (selectPlayer) => {
-    const newCart = [...cart, selectPlayer];
-    setCart(newCart);
+  const addCartHandel = (data) => {
+    setCart([...cart, data]);
+  };
+
+  const removeCartHnadeler = (data) => {
+    const singleData = cart.filter((e) => e.id !== data.id);
+    setCart(singleData);
   };
 
   return (
@@ -30,8 +34,9 @@ const Home = () => {
             {player.map((data, index) => (
               <AllPlyaer
                 key={index}
-                addCartHandel={addCartHandel}
                 allData={data}
+                addCartHandel={addCartHandel}
+                removeCartHnadeler={removeCartHnadeler}
               />
             ))}
           </Col>
